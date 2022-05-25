@@ -1,6 +1,9 @@
 # DV-Lottery
 Script that allow players to buy lottery tickets and win some money.
 
+# Showcase
+
+https://www.youtube.com/watch?v=WpqkvcpwHng
 <h2> Requirements:</h2>
 
 <p>
