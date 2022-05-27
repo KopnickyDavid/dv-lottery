@@ -1,4 +1,4 @@
-# DV-Lottery
+# [ESX/QB]DV-Lottery
 Script that allow players to buy lottery tickets and win some money.
 
 # Showcase
