@@ -15,9 +15,7 @@ client_scripts {
 	'config/locale.lua',
 	'client/*.lua'
 }
-escrow_ignore {
-	'config/*.lua'  
-}
+
   
 lua54 'yes' -- using lua 5.4
 dependency '/server:4700' -- You must have server artifact at least 4700
