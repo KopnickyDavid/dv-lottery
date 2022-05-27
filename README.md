@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=WpqkvcpwHng
 
 <p>
   
-  [QBCORE framework]([url](https://github.com/qbcore-framework)) or ESX framework
+  [QBCORE framework]([url](https://github.com/qbcore-framework)) or ESX framework,nh contextmenu
 
 </p>
 
