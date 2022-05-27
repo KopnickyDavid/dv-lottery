@@ -1,7 +1,8 @@
 Config = {}
+Config.framework = 'qb' -- esx/qb
 Config.distance = 2 --distance to show markers/drawtext
 Config.usekey = 38  -- key to open stashes/bossmenu  default E you can change to other https://docs.fivem.net/docs/game-references/controls/
-
+Config.load = 'QBCore:Client:OnPlayerLoaded' -- 'QBCore:Client:OnPlayerLoaded'/'esx:playerLoaded'
 Config.markers = {
     type = 2, --type of marker default arrow you can change to other https://docs.fivem.net/docs/game-references/markers/
     red =225, -- red colour scale 0-225

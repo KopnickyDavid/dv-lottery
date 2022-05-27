@@ -1,4 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject() 
 RegisterNetEvent('dv-lottery:server:log', function(name, message, color)
     local connect = {
       {
@@ -14,7 +13,6 @@ RegisterNetEvent('dv-lottery:server:log', function(name, message, color)
   end)
    
 RegisterNetEvent('dv-lottery:server:add', function(item,type,coords)
-    local Player = QBCore.Functions.GetPlayer(source)
     local ped = GetPlayerPed(source)
     local playerCoords = GetEntityCoords(ped)
      local distance = #(playerCoords - coords)
@@ -24,31 +22,60 @@ RegisterNetEvent('dv-lottery:server:add', function(item,type,coords)
     local id2 = GetPlayerIdentifier(source,2)
     local id3 = GetPlayerIdentifier(source,4)
 if distance < Config.sdistance then
+    if Config.framework == 'qb' then
+        local QBCore = exports['qb-core']:GetCoreObject() 
+        local Player = QBCore.Functions.GetPlayer(source)
     if type == 'basic' then
-        if Player.Functions.RemoveMoney('bank', 500) then
+        if Player.Functions.RemoveMoney('bank', Config.basicprice) then
             Player.Functions.AddItem(item, 1)
             TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
         end
             elseif type == 'devil' then
-            if Player.Functions.RemoveMoney('bank', 1000) then
+            if Player.Functions.RemoveMoney('bank', Config.devilprice) then
             Player.Functions.AddItem(item, 1)    
             TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)  
             end      
             elseif type == 'golden' then
-            if Player.Functions.RemoveMoney('bank', 1500) then
+            if Player.Functions.RemoveMoney('bank', Config.goldenprice) then
             Player.Functions.AddItem(item, 1)           
             TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
             end 
             elseif type == 'unlimited' then
-            if Player.Functions.RemoveMoney('bank', 2500) then
+            if Player.Functions.RemoveMoney('bank', Config.ulprice) then
             Player.Functions.AddItem(item, 1)
+            TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06) 
+    end
+end
+end
+if Config.framework == 'esx' then
+        local ESX = exports["es_extended"]:getSharedObject()
+        local xPlayer = ESX.GetPlayerFromId(source)
+        if type == 'basic' then
+           xPlayer.removeAccountMoney('bank', Config.basicprice) 
+            xPlayer.addInventoryItem('basicl', 1)
             TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
-    end
-else
-    TriggerEvent('dv-lottery:server:log',"Danger collecting item","**".."Player is probaly using cheats because distance is:"..' '..distance .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+        
+            elseif type == 'devil' then
+             xPlayer.removeAccountMoney('bank', Config.devilprice) 
+             xPlayer.addInventoryItem('devill', 1)    
+            TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)        
+            elseif type == 'golden' then
+             xPlayer.removeAccountMoney('bank', Config.goldenprice) 
+             xPlayer.addInventoryItem(item, 1)           
+            TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+             
+            elseif type == 'unlimited' then
+             xPlayer.removeAccountMoney('bank', Config.ulprice) 
+             xPlayer.addInventoryItem(item, 1)
+            TriggerEvent('dv-lottery:server:log',"Bought lottery","**".."Player Bought lottery:"..' '..type .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06) 
+            end
         end
-    end
+elseif distance > Config.sdistance then
+    TriggerEvent('dv-lottery:server:log',"Danger collecting item","**".."Player is probaly using cheats because distance is:"..' '..distance .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+end
 end)
+if Config.framework == 'qb' then
+    local QBCore = exports['qb-core']:GetCoreObject() 
 QBCore.Functions.CreateUseableItem("basicl", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     local name = GetPlayerName(source)
@@ -96,9 +123,62 @@ QBCore.Functions.CreateUseableItem("unlimitedl", function(source, item)
     local id1 = GetPlayerIdentifier(source,1)
     local id2 = GetPlayerIdentifier(source,2)
     local id3 = GetPlayerIdentifier(source,4)
-	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+	if Player.Functions.RemoveItem(item.name, 1,item.slot) then
         local count = math.random(Config.ulmin,Config.ulmax)
         Player.Functions.AddMoney('cash', count)
         TriggerEvent('dv-lottery:server:log',"Lottery","**".."Player won in Ultimate lottery:"..' '..count .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
     end
 end)
+end
+if Config.framework == 'esx' then
+    local ESX = exports["es_extended"]:getSharedObject()
+    ESX.RegisterUsableItem('basicl', function(source)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local name = GetPlayerName(source)
+        local license = GetPlayerIdentifier(source,0)
+        local id1 = GetPlayerIdentifier(source,1)
+        local id2 = GetPlayerIdentifier(source,2)
+        local id3 = GetPlayerIdentifier(source,4)
+         xPlayer.removeInventoryItem('basicl', 1) 
+            local count = math.random(Config.basicmin,Config.basicmax)
+            xPlayer.addAccountMoney('bank',count)
+            TriggerEvent('dv-lottery:server:log',"Lottery","**".."Player won in Basic lottery:"..' '..count .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+    end)
+    ESX.RegisterUsableItem("devill", function(source)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local name = GetPlayerName(source)
+        local license = GetPlayerIdentifier(source,0)
+        local id1 = GetPlayerIdentifier(source,1)
+        local id2 = GetPlayerIdentifier(source,2)
+        local id3 = GetPlayerIdentifier(source,4)
+         xPlayer.removeInventoryItem('devill', 1) 
+            local count = math.random(Config.devmin,Config.devmax)
+            xPlayer.addAccountMoney('bank',count)
+            TriggerEvent('dv-lottery:server:log',"Lottery","**".."Player won in Devil lottery:"..' '..count .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+
+    end)
+    ESX.RegisterUsableItem("goldenl", function(source)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local name = GetPlayerName(source)
+        local license = GetPlayerIdentifier(source,0)
+        local id1 = GetPlayerIdentifier(source,1)
+        local id2 = GetPlayerIdentifier(source,2)
+        local id3 = GetPlayerIdentifier(source,4)
+         xPlayer.removeInventoryItem('goldenl', 1) 
+            local count = math.random(Config.goldmin,Config.goldmax)
+            xPlayer.addAccountMoney('bank',count)
+            TriggerEvent('dv-lottery:server:log',"Lottery","**".."Player won in Golden lottery:"..' '..count .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+    end)
+    ESX.RegisterUsableItem("unlimitedl", function(source)
+        local xPlayer = ESX.GetPlayerFromId(source)
+        local name = GetPlayerName(source)
+        local license = GetPlayerIdentifier(source,0)
+        local id1 = GetPlayerIdentifier(source,1)
+        local id2 = GetPlayerIdentifier(source,2)
+        local id3 = GetPlayerIdentifier(source,4)
+         xPlayer.removeInventoryItem('unlimitedl',  1) 
+            local count = math.random(Config.ulmin,Config.ulmax)
+            xPlayer.addAccountMoney('bank',count)
+            TriggerEvent('dv-lottery:server:log',"Lottery","**".."Player won in Ultimate lottery:"..' '..count .."**".."\n ".."**".."Steam name:"..' '.."**"..name.."\n ".."**".."License:".."**"..' '..license.."\n".."**".."Discord:".."**"..' '..id1.."\n".."**".."Fivem:"..' '.."**"..id2.."\n".."**".."IP:"..' '.."**"..id3,EE2F06)
+    end)
+end
