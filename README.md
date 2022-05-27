@@ -34,7 +34,10 @@ Cheater protection for giving money or items
 <p>1.Download resource from here</p>
 <p>2.put it inside resource folder</p>
 <p>3.Put ensure dv-lottery inside server.cfg</p>
+ QB:
 <p>4.Put items from item.md inside qb-core/shared/items.lua</p>
+ESX:
+  <p>4.Import esx.sql</p>
 <p>5.Restart server and you are done</p>
 
 <h1>Crated by Davee|Discord support:https://discord.gg/hT8bahGHCb<h1>
