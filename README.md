@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=WpqkvcpwHng
 
 <p>
   
-  [QBCORE framework]([url](https://github.com/qbcore-framework))
+  [QBCORE framework]([url](https://github.com/qbcore-framework)) or ESX framework
 
 </p>
 
@@ -30,7 +30,6 @@ Secured webhooks on server side
 Cheater protection for giving money or items
 </p>
 <h2>Planed updates:</h2>
-  <p>Multi-framework support</p>
 <h1>INSTALLATION</h1>
 <p>1.Download resource from here</p>
 <p>2.put it inside resource folder</p>
