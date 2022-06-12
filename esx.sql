@@ -1,4 +1,7 @@
 INSERT INTO `items` (`name`, `label`, `weight`) VALUES
-	('cashroll', 'Cash of roll', 1),
-	('laptop', 'Hacking Laptop', 1)
+	('basicl', 'Basic lottery', 1),
+	('devill', 'Devil Lottery', 1),
+    ('goldenl', 'Golden Lottery', 1),
+	('unlimitedl', 'Ultimate Lottery', 1)
+
 ;
