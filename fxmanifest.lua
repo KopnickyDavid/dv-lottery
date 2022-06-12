@@ -1,9 +1,9 @@
 fx_version 'adamant'
 game 'gta5'
 
-author 'Davee#3722'
-description 'Lottery by Davee.'
-version '1.0'
+author 'DV-SCRIPT'
+description 'Script that allows you to add more illegal roleplay with Yacht heist.'
+version '2.0'
 
 server_scripts {
 	'config/server_config.lua',
@@ -12,10 +12,8 @@ server_scripts {
 
 client_scripts {
 	'config/client_config.lua',
-	'config/locale.lua',
 	'client/*.lua'
 }
 
-  
-lua54 'yes' -- using lua 5.4
+lua54 'yes'
 dependency '/server:4700' -- You must have server artifact at least 4700
