@@ -13,9 +13,10 @@ RegisterNetEvent('dv-lottery:server:log', function(name, message, color)
   end)
    
 RegisterNetEvent('dv-lottery:server:add', function(item,type,coords)
+    local source = source
     local ped = GetPlayerPed(source)
     local playerCoords = GetEntityCoords(ped)
-     local distance = #(playerCoords - coords)
+    local distance = #(playerCoords - coords)
     local name = GetPlayerName(source)
     local license = GetPlayerIdentifier(source,0)
     local id1 = GetPlayerIdentifier(source,1)
